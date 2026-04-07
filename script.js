@@ -37,11 +37,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Mobile Menu Dummy (Simplified)
+    // Mobile Menu
     const menuBtn = id('menu-btn');
-    if (menuBtn) {
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuBtn && navLinks) {
         menuBtn.addEventListener('click', () => {
-            alert('Mobile menu clicked! In a full implementation, this would toggle a sidebar.');
+            navLinks.classList.toggle('active');
+            // Toggle menu icon
+            const icon = menuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
         });
     }
 
