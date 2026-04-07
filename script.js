@@ -49,13 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return document.getElementById(name);
     }
 
-    // Contact Form submission mockup
+    // Contact Form submission handling (Removing preventDefault to allow Google Form POST)
     const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message, Abhinav will get back to you soon!');
-            contactForm.reset();
-        });
-    }
+    // If you want to use AJAX/fetch instead of a full page redirect, you would handle that here.
+    // For now, we allow the standard Google Forms redirect.
 });
